@@ -13,9 +13,7 @@
       <span class="total">{{ total_followers }}</span>
       follower{{ total_followers|pluralize }}
     </span>
-    <a href="#" data-id="{{ user.id }}" 
-       data-action="{% if request.user in user.followers.all %}un{% endif %}follow" 
-       class="follow button">
+    <a href="#" data-id="{{ user.id }}" data-action="{% if request.user in user.followers.all %}un{% endif %}follow" class="follow button">
       {% if request.user not in user.followers.all %}
         Follow
       {% else %}
@@ -27,3 +25,44 @@
     </div>
   {% endwith %}
 {% endblock %}
+
+{% block domready %}
+  var url = '{% url "user_follow" %}';
+  var options = {
+    method: 'POST',
+    headers: {'X-CSRFToken': csrftoken},
+    mode: 'same-origin'
+  }
+  
+  document.querySelector('a.follow').addEventListener('click', function(e){
+    e.preventDefault();
+    var followButton = this;
+
+    // add request body
+    var formData = new FormData();
+    formData.append('id', followButton.dataset.id);
+    formData.append('action', followButton.dataset.action);
+    options['body'] = formData;
+    
+    // send HTTP request
+    fetch(url, options)
+    .then(response => response.json())
+    .then(data => {
+      if (data['status'] === 'ok')
+      {
+        var previousAction = followButton.dataset.action;
+        
+        // toggle button text and data-action
+        var action = previousAction === 'follow' ? 'unfollow' : 'follow';
+        followButton.dataset.action = action;
+        followButton.innerHTML = action;
+        
+        // update follower count
+        var followerCount = document.querySelector('span.count .total');
+        var totalFollowers = parseInt(followerCount.innerHTML);
+        followerCount.innerHTML = previousAction === 'follow' ? totalFollowers + 1 : totalFollowers - 1;
+      }
+    })    
+  });
+{% endblock %}
+
