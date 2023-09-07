@@ -395,3 +395,7 @@ img.user-detail {
     font-style:italic;
     color:#ccc;
 }
+.item-img {
+    border-radius: 50%;
+    box-shadow: 3px 1px 5px rgba(0,0,0,0.3);
+}
