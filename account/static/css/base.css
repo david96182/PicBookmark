@@ -111,11 +111,52 @@ input, textarea {
 }
 input[type=submit], a.button {
     font-weight:bold;
-    background:#12c064;
     color:#fff;
-    padding:10px 20px;
-    font-size:14px;
-    text-transform:uppercase;
+    padding: 0.8em 1.8em;
+    border: 2px solid #17C3B2;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #12c064;
+}
+input[type=submit]::before, a.button::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #17C3B2;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+input[type=submit]:hover::before, a.button:hover::before {
+    width: 105%;
+}
+input[type=submit]:hover, a.button:hover {
+    color: #111;
+}
+.bookbutton {
+    font-weight:bold;
+    color:#fff;
+    padding: 0.8em 1.8em;
+    border: 2px solid #17C3B2;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #12c064;
 }
 .errorlist {
     color:#cc0033;
@@ -187,9 +228,32 @@ ul.messages li a.close {
     display:block;
     color:#fff;
 }
-.social li.facebook { background:#3b5399; }
-.social li.twitter { background:#00cffa; }
-.social li.google { background:#de1710; }
+.google { 
+  max-width: 320px;
+  display: flex !important;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  gap: 0.75rem;
+  color: rgb(65, 63, 63) !important;
+  background-color: #fff !important;
+  cursor: pointer;
+  transition: all .6s ease;
+}
+.google svg {
+  height: 24px;
+}
+.google:hover {
+  transform: scale(1.02);
+}
+
 
 
 /* images */
