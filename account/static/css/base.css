@@ -380,7 +380,17 @@ img.user-detail {
     overflow:auto;
     margin-right:20px;
 }
+.profile-info img {
+    border-radius: 50%;
+    box-shadow: 1px 3px 6px rgba(0,0,0,0.3);
+    width:180px;
+    height:180px;
+
+}
 .image-container { margin-top:40px; }
+.user img {
+    box-shadow: 1px 3px 15px rgba(0,0,0,0.3);
+}
 
 /* actions */
 .action {
@@ -399,3 +409,4 @@ img.user-detail {
     border-radius: 50%;
     box-shadow: 3px 1px 5px rgba(0,0,0,0.3);
 }
+
