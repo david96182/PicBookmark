@@ -3,11 +3,15 @@
 <html>
 <head>
   <title>{% block title %}{% endblock %}</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "img/favicon.png" %}">
   <link href="{% static "css/base.css" %}" rel="stylesheet">
+  
 </head>
 <body>
   <div id="header">
-    <span class="logo">Bookmarks</span>
+    <span class="logo">
+        <img src="{% static "img/logo.png" %}" width=130 alt="logo">
+    </span>
     {% if request.user.is_authenticated %}
       <ul class="menu">
         <li {% if section == "dashboard" %}class="selected"{% endif %}>
