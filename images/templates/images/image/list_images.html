@@ -1,16 +1,21 @@
 {% load thumbnail %}
 {% for image in images %}
-  <div class="image">
-    <a href="{{ image.get_absolute_url }}">
-      {% thumbnail image.image 300x300 crop="smart" as im %}
+  <div class="card">
+    <div class="card-image">
       <a href="{{ image.get_absolute_url }}">
-        <img src="{{ im.url }}">
-      </a>
-    </a>
-    <div class="info">
-      <a href="{{ image.get_absolute_url }}" class="title">
-        {{ image.title }}
+        {% thumbnail image.image 300x300 crop="smart" as im %}
+        <a href="{{ image.get_absolute_url }}">
+          <img src="{{ im.url }}">
+        </a>
       </a>
     </div>
+    <div class="heading">
+      <a href="{{ image.get_absolute_url }}"">
+        {{ image.title }}
+      </a>
+      <br><br>
+      <div class="author"> By <span class="name">{{ image.user }}</span> {{ image.created }}</div>
+    </div> 
+    
   </div>
 {% endfor %}
