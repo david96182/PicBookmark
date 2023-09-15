@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-image">
       <a href="{{ image.get_absolute_url }}">
-        {% thumbnail image.image 300x300 crop="smart" as im %}
+        {% thumbnail image.image.url 300x300 crop="smart" as im %}
         <a href="{{ image.get_absolute_url }}">
           <img src="{{ im.url }}">
         </a>
