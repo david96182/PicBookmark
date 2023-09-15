@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'actions.apps.ActionsConfig',
     'debug_toolbar',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -186,4 +187,15 @@ INTERNAL_IPS = [
 REDIS_HOST = os.environ.get('REDIS_HOST')
 REDIS_PORT = os.environ.get('REDIS_PORT')
 REDIS_DB = os.environ.get('REDIS_DB')
+
+DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropboxStorage"
+
+DROPBOX_APP_KEY = os.environ.get('DROPBOX_APP_KEY') 
+
+DROPBOX_APP_SECRET = os.environ.get('DROPBOX_APP_SECRET')
+
+DROPBOX_OAUTH2_REFRESH_TOKEN = os.environ.get('DROPBOX_OAUTH2_REFRESH_TOKEN')
+
+
+
 
