@@ -189,6 +189,7 @@ REDIS_PORT = os.environ.get('REDIS_PORT')
 REDIS_DB = os.environ.get('REDIS_DB')
 
 DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropboxStorage"
+THUMBNAIL_DEFAULT_STORAGE = "storages.backends.dropbox.DropboxStorage" 
 
 DROPBOX_APP_KEY = os.environ.get('DROPBOX_APP_KEY') 
 

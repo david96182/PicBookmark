@@ -11,7 +11,7 @@
       <div class="user">
         <a href="{{ user.get_absolute_url }}">
           {% if user.profile.photo %} 
-            <img src="{% thumbnail user.profile.photo.url 180x180 %}">
+            <img src="{% thumbnail user.profile.photo 180x180 %}">
           {% else %} 
             <img src="{% static "img/user-default.png" %}">
           {% endif %}
